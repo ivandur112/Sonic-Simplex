@@ -38,7 +38,7 @@ It's like SRB1 (but it sucks less, I guess...)
 
 ## Woodland Forest
 Wood Zone (scrapped idea from Sonic 2 and SRB2) but better!
-![Woodland Forest: Act 1](woodimage.png)
+![Woodland Forest: Act 1](woodsimage.png)
 ## Dusty Range
 What if we mix Dusty Shower (from Sonic 2) and Rocky Mountain (from the SRB saga)?  
 This zone is the answer.

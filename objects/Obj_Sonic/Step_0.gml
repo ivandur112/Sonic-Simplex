@@ -1,0 +1,144 @@
+// Movement Input
+var input_dir = keyboard_check(vk_right) - keyboard_check(vk_left);
+
+// Little chunky variable boy =o
+var on_ground = place_meeting(x, y + 1, Obj_Terrain);
+
+// DOOM: THE SCRIPT PORT
+if (fucked)
+{
+	move_y += 0.5;
+    y += move_y;
+    sprite_index = Spr_SonicDeath;
+    if (y > room_height + 100) // DON'T TOUCH IT
+    {
+		rings = 0
+        room_restart();
+    }
+    exit;
+}
+
+if (!can_move)
+{
+    move_speed = 0;
+    move_y = 0;
+    hspeed = 0;
+    vspeed = 0;
+    sprite_index = Spr_SonicIdle;
+    image_speed = 0;
+    exit;
+}
+
+// Check invincibility
+if (invincible)
+{
+    inv_timer++; // Actually, for some reason, GMS2 creators decided these to be "add +1". C, LEARN FROM THESE!!! >:(
+    image_alpha = (inv_timer mod 6 < 3) ? 0.3 : 1.0;
+    if (inv_timer >= 120)
+    {
+        invincible  = false;
+        inv_timer   = 0;
+        image_alpha = 1.0;
+    }
+}
+
+// Movement control
+if (input_dir != 0)
+{
+    move_speed += input_dir * acceleration;
+    
+    if (abs(move_speed) > max_speed)
+    {
+        move_speed = sign(move_speed) * max_speed;
+    }
+}
+
+// Friction
+if (input_dir == 0)
+{
+    move_speed *= friction;
+    
+    if (abs(move_speed) < 0.1)
+    {
+        move_speed = 0;
+    }
+}
+
+// Collision
+if (on_ground)
+{
+	if keyboard_check_pressed(vk_up)
+	{
+		y -= 1;
+		move_y = -jump_speed;
+		audio_play_sound(SFX_Jump, 2, false);
+	}
+	else if move_y > 0
+	{
+		move_y = 0;
+	}
+}
+else if move_y < 10
+{
+	move_y += 1;
+}
+
+// Movement X
+if (move_speed != 0) 
+{
+    if (!place_meeting(x + move_speed, y, Obj_Terrain)) 
+	{
+        x += move_speed;
+    }
+    image_xscale = sign(move_speed) * orig_xscale;
+}
+
+// Movement Y
+if (move_y != 0)
+{
+    if (!place_meeting(x, y + move_y, Obj_Terrain)) 
+	{
+        y += move_y;
+    } 
+	else if (move_y > 0) 
+	{
+        move_y = 0;
+    }
+}
+
+// Waterfall weeeeeeee
+with (Obj_Waterfall)
+{
+    if (point_in_rectangle(other.x, other.y, bbox_left, bbox_top, bbox_right, bbox_bottom))
+    {
+        // Direct weeeeee
+        other.y += 2;
+
+        // No juumping in da weeeee
+        other.move_y = 0;
+
+        // Skid weeeee
+        other.move_speed *= 0.9;
+    }
+}
+
+// Set direction
+if (move_speed != 0)
+{
+    image_xscale = sign(move_speed) * orig_xscale;
+}
+
+// Animation logic
+if (!on_ground)
+{
+    sprite_index = Spr_SonicBall;
+}
+else if (abs(move_speed) > 0)
+{
+    sprite_index = Spr_SonicRun;
+}
+else
+{
+    sprite_index = Spr_SonicIdle;
+}
+

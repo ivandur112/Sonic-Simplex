@@ -1,0 +1,2 @@
+// Respawn
+room_restart();

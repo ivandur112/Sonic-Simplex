@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"RECOVERYSONIC",
+  "name":"RECOVERYSONIC",
+  "parent":{
+    "name":"SONICSIMPLEX",
+    "path":"SONICSIMPLEX.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

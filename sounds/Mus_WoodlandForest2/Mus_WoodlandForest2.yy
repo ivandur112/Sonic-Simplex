@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Mus_WoodlandForest2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":219.22897,
+  "exportDir":"",
+  "name":"Mus_WoodlandForest2",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Mus_WoodlandForest2.mp3",
+  "volume":1.0,
+}
